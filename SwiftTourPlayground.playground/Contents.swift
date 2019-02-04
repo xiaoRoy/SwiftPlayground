@@ -128,3 +128,87 @@ var total = 0
 for index in 0..<4 {
     total += index
 }
+
+//Function and Closure
+
+func greet(name: String, day: String) -> String{
+    return "Hello \(name), today is \(day)"
+}
+
+print(greet(name:"Bob", day:"Tuesday"))
+
+func showSpecial(name: String, special: String) -> String{
+    return "Hello \(name), today's special is \(special)"
+}
+
+
+func greetWithCustomLabel(_ name: String, on day: String) -> String {
+    return "Hello \(name), today is \(day)"
+}
+
+print(greetWithCustomLabel("John", on: "Monday"))
+
+func calculateStatistics(scocres:[Int]) -> (min: Int, max: Int, sum: Int) {
+    var min = scocres[0]
+    var max = min
+    var sum = 0
+    
+    for scocre in scocres {
+        if scocre > max {
+            max = scocre
+        } else if scocre < min {
+            min = scocre
+        }
+        sum += scocre
+    }
+    return (min, max, sum)
+}
+
+let statistics = calculateStatistics(scocres: [5, 3, 100, 3, 9])
+
+
+func returnFifteen() -> Int {
+    var one = 10
+    func add () {
+        one += 5
+    }
+    add()
+    return one
+}
+let fifteen = returnFifteen()
+
+func makeIncrement() -> ((Int) -> Int) {
+    func addOne(number: Int) -> Int {
+        return number + 1
+    }
+    return addOne
+}
+makeIncrement()(7)
+
+
+func hasAnyMatch(numbers: [Int], condition: (Int) -> Bool) -> Bool{
+    var result = false
+    for item in numbers {
+        if(condition(item)) {
+            result = true
+            break
+        }
+    }
+    return result
+}
+
+func lessThanTen (number: Int) -> Bool {
+    return number < 10
+}
+
+let result = hasAnyMatch(numbers: [1, 2, 19, 9], condition: lessThanTen)
+
+let numbers = [1, 2, 3, 4, 5]
+let multiplyThree = numbers.map({(number: Int) -> Int in
+    return number * 3
+})
+
+let anotherMultiplyThree = numbers.map({number in 3 * number})
+print(anotherMultiplyThree)
+var anotherNumber:[Int]  = [1, 8, 2, 9, 12, 7]
+anotherNumber.sort{ $0 > $1}
