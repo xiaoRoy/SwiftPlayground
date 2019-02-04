@@ -210,5 +210,5 @@ let multiplyThree = numbers.map({(number: Int) -> Int in
 
 let anotherMultiplyThree = numbers.map({number in 3 * number})
 print(anotherMultiplyThree)
-var anotherNumber:[Int]  = [1, 8, 2, 9, 12, 7]
+var anotherNumber:[Int] = [1, 8, 2, 9, 12, 7]
 anotherNumber.sort{ $0 > $1}
