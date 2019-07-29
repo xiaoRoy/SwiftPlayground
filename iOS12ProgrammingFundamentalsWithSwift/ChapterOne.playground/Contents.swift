@@ -38,3 +38,18 @@ class Book {
         }
     }
 }
+
+class Dog {
+    var name = ""
+    
+    private var whatDogSays = "woof"
+    
+    func bark() {
+        print(whatDogSays)
+    }
+    
+    func speak() {
+        self.bark()
+        print("what")
+    }
+}
