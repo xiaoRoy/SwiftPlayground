@@ -79,3 +79,39 @@ print("hello", 3, true)
 
 print("Manny", "Moe", separator:", ", terminator:", ")
 print("Jack")
+
+func removeCharacter(_ char: Character, from text: String) -> Int {
+    //no problem
+    var text = text
+    var howMany = 0
+    while let index = text.firstIndex(of: char) {
+        text.remove(at: index)
+        howMany += 1
+    }
+    return howMany
+}
+
+func removeCharacterChangingParam(_ char: Character, from text: inout String) -> Int {
+    var howMany = 0
+    while let index = text.firstIndex(of: char) {
+        text.remove(at: index)
+        howMany += 1
+    }
+    return howMany
+}
+
+var willChange = "hello"
+removeCharacterChangingParam("l", from: &willChange)
+
+class NumberRule{
+    var shouldVarify: Bool = false
+    
+    func isMatch(number: Int) -> Bool {
+        func checkNumber(_ number: Int) -> Bool{
+            let bigNumber = number * number - 44
+            return bigNumber > 100 && bigNumber.description.contains("1")
+        }
+        return !shouldVarify && checkNumber(number)
+    }
+}
+
