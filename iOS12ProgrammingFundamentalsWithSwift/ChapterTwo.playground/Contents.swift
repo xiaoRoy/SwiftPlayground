@@ -115,3 +115,13 @@ class NumberRule{
     }
 }
 
+func coundDown(from number: Int) {
+    print(number)
+    if number > 0 {
+        coundDown(from: number - 1)
+    }
+}
+
+func perform(action: () -> ()) {
+    action()
+}
