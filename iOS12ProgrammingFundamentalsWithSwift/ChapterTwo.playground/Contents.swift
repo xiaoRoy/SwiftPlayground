@@ -1,9 +1,10 @@
 import UIKit
 
+@discardableResult
 func sum(_ one: Int, _ another: Int) -> Int {
     return one + another
 }
-
+_ = sum(3, 4)
 func say1(_ text: String) {
     print(text)
 }
@@ -115,13 +116,136 @@ class NumberRule{
     }
 }
 
-func coundDown(from number: Int) {
+func countDown(from number: Int) {
     print(number)
     if number > 0 {
-        coundDown(from: number - 1)
+        countDown(from: number - 1)
     }
 }
 
 func perform(action: () -> ()) {
     action()
 }
+
+func animate(withDuration time: Float, animations whatToAnimate: () -> (), completion whatToDoLater: (Bool) -> ()) {
+    whatToAnimate()
+    whatToDoLater(true)
+}
+
+animate(withDuration: 0.4,
+        animations: {
+            () -> () in
+            print("running animation")
+},
+        completion: {
+            (finished: Bool) -> () in
+            if finished {
+                print("Animation is finished")
+            }
+}
+)
+
+// omit the return type
+animate(withDuration: 0.4,
+        animations: {
+            () in
+            print("running animation")},
+        completion: {
+            (finished: Bool) in
+            if finished {
+                print("Animation is finished")
+            }}
+)
+
+//omit the in expression
+animate(withDuration: 0.4,
+        animations: {
+            print("running animation")
+            
+        },
+        completion: {
+            (finished: Bool) in
+            if finished {
+                print("Animation is finished")
+        }}
+)
+
+//omit the parameter type
+animate(withDuration: 0.4,
+        animations: {
+            print("running animation")
+        },
+        completion: {
+            (finished) in
+            if finished {
+                print("Animation is finished")
+        }}
+)
+
+//omit the parentheses
+animate(withDuration: 0.4,
+        animations: {
+            print("running animation")
+        },
+        completion: {
+            finished in
+            if finished {
+                print("Animation is finished")
+        }}
+)
+
+//omit the in even when there are parameters
+animate(withDuration: 0.4,
+        animations: {
+            print("running animation")
+        },
+        completion: {
+            if $0 {
+                print("Animation is finished")
+            }
+        }
+)
+
+//omit the paramter name
+animate(withDuration: 0.4,
+        animations: {
+            print("running animation")
+        },
+        completion: {
+            _ in
+            print("Animation is finished")
+        }
+)
+
+//trailing function
+animate(withDuration: 0.4,
+        animations: {
+            print("running animation")
+}) {
+    _ in
+    print("Animation is finished")
+}
+
+//omit calling function parentheses
+perform {
+    print("omit calling function parentheses")
+}
+
+//omit the retrun
+func performThenShow(action: (Int, Int) -> Int) {
+    let result = action(1, 2)
+    print(result)
+}
+
+performThenShow {
+    one, another in
+    one + another
+}
+
+let numbers = [1, 2, 3]
+
+let resultNumbersAnother = numbers.map({
+    (one: Int) -> Int in
+    return one * 2
+})
+let resultNumbers = numbers.map { $0 * 2 }
