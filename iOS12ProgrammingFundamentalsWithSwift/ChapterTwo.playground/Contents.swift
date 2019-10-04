@@ -249,3 +249,188 @@ let resultNumbersAnother = numbers.map({
     return one * 2
 })
 let resultNumbers = numbers.map { $0 * 2 }
+
+class Point {
+    var x: Float
+    var y: Float
+    
+    init(x: Float, y: Float) {
+        self.x = x
+        self.y = y
+    }
+}
+
+func clone(point: Point, with count: Int) -> [Point] {
+    var result = [Point]()
+    for _ in 0...count {
+        result.append(Point(x:point.x, y:point.y))
+    }
+    return result
+}
+
+clone(
+    point: {
+    () -> Point in
+    Point(x: 1.4, y: 4.4)}(),
+    with: 12
+)
+
+
+//Closures
+class WhatSize {
+    var width: Int
+    var height: Int
+    
+    init(width: Int, height: Int) {
+        self.width = width
+        self.height = height
+    }
+}
+
+class WhatImage {}
+
+class WhatRect {
+    var x: Int
+    var y: Int
+    var width: Int
+    var height: Int
+    
+    init(x: Int, y: Int, width: Int, height: Int) {
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+    }
+}
+
+class WhatBezierPath {
+    var rect: WhatRect
+    var cornerRadius: Int
+    
+    init(rect: WhatRect, cornerRadius: Int) {
+        self.rect = rect
+        self.cornerRadius = cornerRadius
+    }
+    
+    func stroke() {
+        
+    }
+}
+
+func imageOfSize(_ size: WhatSize, _ whatToDraw: () -> ()) -> WhatImage {
+    whatToDraw()
+    return WhatImage()
+}
+
+func callImageOfSizeVersionOne() {
+    imageOfSize(WhatSize(width: 20, height: 45)) {
+        let path = WhatBezierPath(
+            rect: WhatRect(x: 0, y: 0, width: 20, height: 45),
+            cornerRadius: 8
+        )
+        path.stroke()
+    }
+}
+
+func callImageOfSizeVersionTwo() {
+    let size = WhatSize(width: 20, height: 45)
+    imageOfSize(size) {
+        let path = WhatBezierPath(
+            rect: WhatRect(x: 0, y: 0, width: size.width, height: size.height),
+            cornerRadius: 8
+        )
+        path.stroke()
+    }
+}
+
+func makeRoundedRectangle(_ size: WhatSize) -> WhatImage {
+    let image = imageOfSize(size) {
+        let path = WhatBezierPath(
+            rect: WhatRect(x: 0, y: 0, width: size.width, height: size.height),
+            cornerRadius: 8
+        )
+        path.stroke()
+    }
+    return image
+}
+
+func makeRoundedRectangleMaker(_ size: WhatSize) -> () -> WhatImage {
+    func makeRoundedRectangle() -> WhatImage {
+        let image = imageOfSize(size) {
+            let path = WhatBezierPath(
+                rect: WhatRect(x: 0, y: 0, width: size.width, height: size.height),
+                cornerRadius: 8
+            )
+            path.stroke()
+        }
+        return image
+    }
+    return makeRoundedRectangle
+}
+
+let maker = makeRoundedRectangleMaker(WhatSize(width: 20, height: 45))
+let image = maker()
+
+
+func makeRoundedRectangleMakerFinalVersion(_ size: WhatSize) -> () -> WhatImage {
+    return {
+        imageOfSize(size) {
+            let path = WhatBezierPath(
+                rect: WhatRect(x: 0, y: 0, width: size.width, height: size.height),
+                cornerRadius: 8
+            )
+            path.stroke()
+        }
+    }
+}
+
+func setCapturedValue() {
+    func pass100(_ block: (Int) -> ()) {
+        block(100)
+    }
+    
+    var number = 44
+    func setNumber(value: Int) {
+        number = value
+    }
+    pass100(setNumber)
+}
+
+func countAdder(_ block: @escaping () -> ()) -> () -> () {
+    var count = 0
+    return {
+        count = count + 1
+        print("count is \(count)")
+        block()
+    }
+}
+
+func greet() {
+    print("How you doing?")
+}
+
+let countedGreet = countAdder(greet)
+countedGreet()
+countedGreet()
+countedGreet()
+
+
+class What {
+    
+    var name = "what"
+    
+    func functionPasser(block: @escaping() -> ()) -> () -> () {
+        return block
+    }
+    
+    func display() {
+        print("what")
+    }
+    
+    func doCall() {
+        functionPasser {
+            print(self.name)
+            print(self.display())
+        }
+    }
+}
