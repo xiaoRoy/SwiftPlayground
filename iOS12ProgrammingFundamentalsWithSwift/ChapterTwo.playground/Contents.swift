@@ -251,19 +251,22 @@ let resultNumbersAnother = numbers.map({
 let resultNumbers = numbers.map { $0 * 2 }
 
 class Point {
-    var x: Float
-    var y: Float
+    var x: Float = 0
+    var y: Float = 0
     
-    init(x: Float, y: Float) {
-        self.x = x
-        self.y = y
-    }
+//    init(x: Float, y: Float) {
+//        self.x = x
+//        self.y = y
+//    }
 }
 
 func clone(point: Point, with count: Int) -> [Point] {
     var result = [Point]()
     for _ in 0...count {
-        result.append(Point(x:point.x, y:point.y))
+        let newPoint = Point()
+        newPoint.x = point.x
+        newPoint.y = point.y
+        result.append(newPoint)
     }
     return result
 }
@@ -271,7 +274,11 @@ func clone(point: Point, with count: Int) -> [Point] {
 clone(
     point: {
     () -> Point in
-    Point(x: 1.4, y: 4.4)}(),
+    let point = Point()
+        point.x = 3.1
+        point.y = 4.4
+        return point
+}(),
     with: 12
 )
 
@@ -384,6 +391,33 @@ func makeRoundedRectangleMakerFinalVersion(_ size: WhatSize) -> () -> WhatImage 
     }
 }
 
+func makeRoundedRectangleMakerVersionB(_ size: WhatSize, _ cornerRadius: Int) -> () -> WhatImage {
+    return {
+        imageOfSize(size) {
+            let path = WhatBezierPath(
+                rect: WhatRect(x: 0, y: 0, width: size.width, height: size.height),
+                cornerRadius: cornerRadius
+            )
+            path.stroke()
+        }
+    }
+}
+
+func makeRoundedRectangleMakerVersionC(_ size: WhatSize)  -> (Int) -> WhatImage{
+    return {
+        cornerRadius in
+        imageOfSize(size) {
+            let path = WhatBezierPath(
+                rect: WhatRect(x: 0, y: 0, width: size.width, height: size.height),
+                cornerRadius: cornerRadius
+            )
+            path.stroke()
+        }
+    }
+}
+
+let imageVersionC = makeRoundedRectangleMakerVersionC(WhatSize(width: 45, height: 12))(8)
+
 func setCapturedValue() {
     func pass100(_ block: (Int) -> ()) {
         block(100)
@@ -432,5 +466,78 @@ class What {
             print(self.name)
             print(self.display())
         }
+    }
+}
+
+class Bird {
+    
+    func fly() {
+        print("fly")
+    }
+    
+    func fly(_ highSpeed: Bool) {
+        if highSpeed {
+            print("fly in high speed")
+        } else {
+            self.fly()
+        }
+    }
+    
+    func fly(times: Int) {
+        
+    }
+    
+    func fly(times: String) {
+        
+    }
+    
+    func fly(with: String) {
+        
+    }
+    
+    func test() {
+        let flyA = fly(_:)
+        flyA(false)
+        
+        let flyB = fly as (Bool) -> ()
+        flyB(true)
+        
+        let flyC = fly as () -> ()
+        flyC()
+        
+        let flyD = fly(with:)
+        flyD("water")
+    }
+    
+    func testB() {
+        let block = {
+            () -> (Bool) -> () in
+            return self.fly(_:)
+        }
+        block()
+    }
+}
+
+
+class Fish {
+    func swim(){
+        print("Fish swims.")
+    }
+}
+
+class Cat {
+    func jump() {
+        print("Cat jumps")
+    }
+    
+    func useDotNotationWithInstance() {
+        let fish = Fish()
+        let fishSwim = fish.swim
+        fishSwim()
+    }
+    
+    func useDotNotationWithType() {
+        let fishSwim = Fish.swim
+        fishSwim(Fish())
     }
 }
