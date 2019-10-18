@@ -448,6 +448,10 @@ countedGreet()
 countedGreet()
 countedGreet()
 
+let anotherCountedGreet = countAdder(greet)
+anotherCountedGreet()
+anotherCountedGreet()
+anotherCountedGreet()
 
 class What {
     
