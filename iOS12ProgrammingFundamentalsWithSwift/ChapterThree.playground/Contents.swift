@@ -124,6 +124,8 @@ class Data {}
 
 class BackgroundHandler {
     
+    private static var what = ""
+//    class var storedClassProp = "class property not OK"
     private var _cachedData: Data! = nil
     
     var cachedData: Data  {
@@ -139,6 +141,20 @@ class BackgroundHandler {
             return self._cachedData
         }
     }
-    
-    
 }
+
+//Setter Observers
+var message: String = "Hello World!" {
+    willSet {
+        print("oldValue:\(message)")
+        print("newValue:\(newValue)")
+    }
+    
+    didSet {
+        print("oldValue:\(oldValue)")
+        print("newValue:\(message)")
+    }
+}
+
+message = "hi"
+
