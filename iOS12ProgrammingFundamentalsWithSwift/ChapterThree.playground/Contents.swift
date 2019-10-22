@@ -158,3 +158,38 @@ var message: String = "Hello World!" {
 
 message = "hi"
 
+//Lazy Initialization
+class DBManager {
+    static let sharedSingleton = DBManager()
+}
+
+//Built-In Simple Types
+
+///Bool
+var checked = false
+checked.toggle()
+print(checked)
+
+///Numbers
+let aBinay = 0b1001_1100
+let aOctal = 0o1234_5670
+let aHex = 0x1234_abcd
+let exponetOfTen = 3e2 // 300
+
+///Numeric coercion
+let intA = 10
+let doubleA = Double(intA) // 10.0
+
+let doubleB = 3.44
+let intB = Int(doubleB) // 3
+
+let doubleC: Double = 10 // it is legal.
+let intC = 12
+//let doubleD: Double = intC // it is not lagel
+
+let doubleD = 10 / 3.0 //3.33333
+
+let intD = 10
+let doubleE = 3.0
+//let doubleF = intD / doubleE
+
