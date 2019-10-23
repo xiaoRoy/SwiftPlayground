@@ -192,4 +192,16 @@ let doubleD = 10 / 3.0 //3.33333
 let intD = 10
 let doubleE = 3.0
 //let doubleF = intD / doubleE
+let doubleF = Double(intD) / doubleE
 
+
+let int16A: Int16 = 128
+//let int8A: Int8 = Int8(int16A) // it could be compoled but it will crash at runtime.
+
+let int8B: Int8? = Int8(exactly: 128)
+let int8C: Int8 = Int8(clamping: int16A)
+
+//let overFlow = Int.max - 2 + 12 / 2 // runtime crash
+let (result, overflow) = Int.max.addingReportingOverflow(12)
+
+let randomResult = Int.random(in: 1...10)
