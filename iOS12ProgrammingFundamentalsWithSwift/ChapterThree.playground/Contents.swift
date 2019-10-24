@@ -205,3 +205,46 @@ let int8C: Int8 = Int8(clamping: int16A)
 let (result, overflow) = Int.max.addingReportingOverflow(12)
 
 let randomResult = Int.random(in: 1...10)
+
+//String
+let multipleLines = """
+    Line 1
+
+        Line 2
+    Line 3
+
+    """
+let multipleLinesB = """
+    Line "1"
+        Line 2 \
+    and this still Line 2
+"""
+print(multipleLinesB)
+
+let numberOfApples = 5
+let messageA = "You have \(numberOfApples) apples"
+
+var hello = "hello"
+let world = "world"
+let messageB = hello + world
+
+hello += world
+print(hello)
+
+var helloA = "hello"
+helloA.append("world")
+print(helloA)
+
+let messageC = ["hello", "world"].joined(separator: "")
+
+let numberA = 7
+let numberAInString = String(7)
+
+let numberB = 31
+let numberBInString = String(31, radix: 16)
+
+let numberCInString = "31"
+let numberC: Int? = Int(numberCInString)
+
+let numberDInString = "1f"
+let numberD = Int(numberDInString, radix: 16)
