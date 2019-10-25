@@ -248,3 +248,16 @@ let numberC: Int? = Int(numberCInString)
 
 let numberDInString = "1f"
 let numberD = Int(numberDInString, radix: 16)
+
+let textA = "hello world"
+let textB = textA.capitalized
+
+let what = "Ha\u{030A}kon"
+let whatCount = what.count // 5
+let whatLength = (what as NSString).length // 6
+
+for char in what {
+    print(char)
+}
+
+let singleCharA = Character("A")
