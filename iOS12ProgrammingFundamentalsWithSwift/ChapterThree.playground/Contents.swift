@@ -293,3 +293,62 @@ let firstOfTextE: Substring = textE.dropFirst()
 let textF = "brand"
 let prfixF: Substring = textF.prefix(2)
 let suffixF: Substring = textF.suffix(2)
+
+let textG = "What is you name?"
+let splitResultG = textG.split {
+    (char: Character) -> Bool in
+    char == " "
+}
+
+let textH = "Peter Parker"
+let startIndex: String.Index = textH.startIndex
+let targetIndex = textH.index(startIndex, offsetBy: 2)
+let resultH = textH[targetIndex]
+
+let textI = "when"
+let textIDropFirst: Substring = textI.dropFirst()
+let textISubstringIndex: String.Index = textIDropFirst.startIndex
+let resultI = textI[textISubstringIndex] // startIndex is 1 so the result is h
+
+var textJ = "hello"
+var textJTargetIndex = textJ.index(textJ.startIndex, offsetBy: 1)
+textJ.insert(contentsOf: "ey, h", at: textJTargetIndex)
+print(textJ)
+
+let rangeA = 1...3
+
+let rangeB = -4 ... -1
+
+for number in 1...4 {
+    print(number)
+}
+
+for number in (1...4).reversed() {
+    print(number)
+}
+
+if rangeB.contains(3) {
+    print("has number three")
+}
+
+let messageF = "calculator"
+let messageArray = Array(messageF)
+let reusltArray = messageArray[2...5]
+let resultF = String(reusltArray)
+
+let name = "Mary Jane"
+let nameStartIndex = name.startIndex
+let nameTargetIndex = name.index(nameStartIndex, offsetBy: 5)
+let nameTargetIndexB = name.index(before: name.endIndex)
+let lastName = name[nameTargetIndex...nameTargetIndexB]
+
+let hint = "hint"
+let hintTargetIndex = hint.index(before: hint.endIndex)
+let resultHint = hint[..<hintTargetIndex]
+
+var startPoint = "start point"
+let startPointStratIndex = startPoint.startIndex
+let replacmentRange = startPointStratIndex...startPoint.index(startPointStratIndex, offsetBy: 4)
+startPoint.replaceSubrange(replacmentRange, with: "end")
+let anotherRange = startPointStratIndex...startPoint.index(startPointStratIndex, offsetBy: 3)
+startPoint.removeSubrange(anotherRange)
