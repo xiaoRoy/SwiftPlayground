@@ -261,3 +261,35 @@ for char in what {
 }
 
 let singleCharA = Character("A")
+let stringA = String(singleCharA)
+
+let textC = "Hello World"
+let firstInText: Character? = textC.first
+let lastInText: Character? = textC.last
+
+let firstL: String.Index? = textC.firstIndex(of: "l")
+
+let firstSmallThanF = textC.firstIndex {
+    (char: Character) -> Bool in
+    char < "f"
+}
+
+let hasO = textC.contains("o")
+
+let hasVowel = textC.contains {
+    (char: Character) in
+    "aeiou".contains(char)
+}
+
+let textD = "Hello World"
+let textDResult = textD.filter {
+    (char: Character) -> Bool in
+    return char != "l"
+}
+
+let textE = "first"
+let firstOfTextE: Substring = textE.dropFirst()
+
+let textF = "brand"
+let prfixF: Substring = textF.prefix(2)
+let suffixF: Substring = textF.suffix(2)
