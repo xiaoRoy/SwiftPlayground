@@ -9,6 +9,7 @@ class Dog {
     func bark() {
         //smelly code
         let one: Int
+        var two: Int
     }
 }
 
