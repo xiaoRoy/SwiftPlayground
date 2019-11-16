@@ -35,6 +35,8 @@ struct Cat{
     }
 }
 
+
+//Properties
 struct Digit {
     var number: Int
     var meaningOfLife: Bool
@@ -63,8 +65,58 @@ class OptionalDog {
         self.name = name
         self.license = license
     }
-    
 }
+
+class Book {
+    var name:String =  "Test"
+    var pageCount = {
+        () -> Int in
+        print("pageCount")
+        return 1
+    }()
+    var info: String {
+        return "Book info:\(self.name) has page count \(self.pageCount)"
+    }
+}
+
+let bookA = Book()
+
+class Guest {
+    var firstName: String
+    var lastName: String
+    
+    var fullNameA: String
+    var fullNameB: String {
+        return "\(self.firstName) \(self.lastName)"
+    }
+    lazy var fullNameC: String = "\(self.firstName) \(self.lastName)"
+    lazy var fullNameD: String = {
+        return "\(self.firstName) \(self.lastName)"
+    }()
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+        fullNameA = "\(firstName) \(lastName)"
+    }
+}
+
+struct Greeting {
+    static let friendly = "hello there"
+    static let hostile = "go away"
+    static let ambivalent = friendly + "but" + hostile
+    static let ambivalentA = Greeting.friendly + "but" + Greeting.hostile
+    static var ambivalentB: String {
+        return self.friendly + "but" + Greeting.hostile
+    }
+    static let ambivalentC = {
+        return Greeting.friendly + "but" + Greeting.hostile
+    }()
+}
+
+//Methods
+
+
+
 
 struct Apple {
 }
