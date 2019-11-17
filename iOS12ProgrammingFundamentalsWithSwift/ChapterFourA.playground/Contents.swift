@@ -93,10 +93,16 @@ class Guest {
     lazy var fullNameD: String = {
         return "\(self.firstName) \(self.lastName)"
     }()
+    lazy var fullNameE: String = self.makeFullName()
+    
     init(firstName: String, lastName: String) {
         self.firstName = firstName
         self.lastName = lastName
         fullNameA = "\(firstName) \(lastName)"
+    }
+    
+    private func makeFullName() -> String {
+        return "\(self.firstName) \(self.lastName)"
     }
 }
 
@@ -111,10 +117,39 @@ struct Greeting {
     static let ambivalentC = {
         return Greeting.friendly + "but" + Greeting.hostile
     }()
+    
+    static func beFriendly() {
+        print(self.friendly)
+    }
 }
 
 //Methods
+class Bird {
+    static let whatBirdSay = "zhi"
+    let id: Int
+    let name: String
+    
+    init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+    }
+    
+    func fly() {
+        print("\(self.name) is flying.")
+    }
+}
 
+class Container {
+    var stored = ""
+    func store(thing: String) {
+        stored = thing
+    }
+}
+
+let container = Container()
+let storeAction = Container.store(container)
+storeAction("some thing")
+print(container.stored)
 
 
 
