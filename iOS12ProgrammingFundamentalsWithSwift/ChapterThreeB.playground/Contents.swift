@@ -7,6 +7,11 @@ let pairB = (1, "two")
 
 let (first, second) = (1, "two")
 let(_, anotherSecond) = pair
+print(first)
+
+let one = 1
+let two = 22
+let (oneA, twoA) = (1, 22)
 
 let message = "hello world"
 for(index, char) in message.enumerated() {

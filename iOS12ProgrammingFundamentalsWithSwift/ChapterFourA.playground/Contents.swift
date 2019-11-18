@@ -151,7 +151,39 @@ let storeAction = Container.store(container)
 storeAction("some thing")
 print(container.stored)
 
+struct DigitA {
+    
+    var number: Int
+    init(number: Int) {
+        self.number = number
+    }
+    
+    subscript(index index: Int) -> Int{
+        get {
+            let numberString = String(self.number)
+            let targetIndex = numberString.index(numberString.startIndex, offsetBy: index)
+            return Int(String(numberString[targetIndex]))!
+        }
+        
+        set (newDigit){
+            var numberString = String(self.number)
+            let targetIndex = numberString.index(numberString.startIndex, offsetBy: index)
+            numberString.replaceSubrange(targetIndex...targetIndex, with: String(newDigit))
+            self.number = Int(numberString)!
+        }
+    }
+}
 
+var digitA = DigitA(number: 234)
+let aDigitFromA = digitA[index: 2]
+digitA[index: 1] = 4
+print(digitA.number)
+
+class Duck {
+    struct  Noise {
+        static var noise = "duck"
+    }
+}
 
 struct Apple {
 }
