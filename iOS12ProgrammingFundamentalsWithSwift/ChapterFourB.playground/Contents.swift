@@ -34,15 +34,58 @@ enum WhatError {
 let errorA = WhatError.number(4)
 let errorB = WhatError.fatal(code: 12, message: "fatal One")
 
+struct MediaQuery {
+    static func loadAlbumsQuery() -> MediaQuery {
+        return MediaQuery()
+    }
+    static func loadPlaylistsQuery() -> MediaQuery {
+        return MediaQuery()
+    }
+    static func loadPodcastsQuery() -> MediaQuery {
+        return MediaQuery()
+    }
+    static func loadBooksQuery() -> MediaQuery {
+        return MediaQuery()
+    }
+}
 enum FilterB: String, CaseIterable {
     case albums = "Albums"
     case playlists = "Playlists"
     case podcasts = "Podcasts"
-    case books = "Books"
+    case books = "AudioBooks"
     
-    init(_ index: Int) {
-        self = FilterB.allCases[index]
+    init?(index: Int) {
+        if !FilterB.allCases.indices.contains(index) {
+            return nil
+        } else {
+            self = FilterB.allCases[index]
+        }
     }
+    
+    init?(_ rawValue: String) {
+        self.init(rawValue: rawValue)
+    }
+    
+    var query: MediaQuery {
+        get {
+            switch self {
+            case .albums:
+                return .loadAlbumsQuery()
+            case .playlists:
+                return .loadPlaylistsQuery()
+            case .podcasts:
+                return .loadPodcastsQuery()
+            case .books:
+                return .loadBooksQuery()
+            }
+        }
+    }
+    
 }
 let filters = FilterB.allCases
+
+let filterFirst = FilterB.albums
+let filterSecond = FilterB(index: 0)
+let filterThird: FilterB? = FilterB(rawValue: "Albums")
+
 
