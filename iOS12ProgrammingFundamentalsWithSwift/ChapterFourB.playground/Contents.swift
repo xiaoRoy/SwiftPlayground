@@ -79,8 +79,24 @@ enum FilterB: String, CaseIterable {
                 return .loadBooksQuery()
             }
         }
+        set(newQuery) {
+            
+        }
     }
     
+    mutating func newQuery(query: MediaQuery) {
+        self.query = query
+    }
+    
+    mutating func advance() {
+        let currentIndex = FilterB.allCases.firstIndex(of: self)!
+        let nextIndex = (currentIndex + 1) % FilterB.allCases.count
+        self = FilterB.allCases[nextIndex]
+    }
+    
+    mutating func backToDfaultFilter() {
+        self = FilterB.books
+    }
 }
 let filters = FilterB.allCases
 
@@ -88,4 +104,6 @@ let filterFirst = FilterB.albums
 let filterSecond = FilterB(index: 0)
 let filterThird: FilterB? = FilterB(rawValue: "Albums")
 
+var  filterFouth = FilterB.books
+filterFouth.advance()
 
