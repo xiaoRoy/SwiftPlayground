@@ -56,3 +56,41 @@ class NotNosiyDog: Dog {
 
 let notNosiyDog = NotNosiyDog()
 notNosiyDog.barkAt(cat: nil)
+
+class Invitation {
+    var id: String = "a123"
+    
+    init(id: String) {
+        self.id = id
+    }
+}
+
+let invitation = Invitation(id: "b231")
+//let invitationA = Invitation() compiler error
+
+class Order {
+    var id: String = ""
+    
+    convenience init(id: String) {
+        self.init()
+        self.id = id
+    }
+}
+
+let orderA = Order(id: "123")
+let orderB = Order()
+
+class Car {
+    
+    let id: String
+    let brand: String
+    
+    init(id: String, brand: String) {
+        self.id = id
+        self.brand = brand
+    }
+    
+    convenience init(id: String) {
+        self.init(id: id, brand: "BMW")
+    }
+}
