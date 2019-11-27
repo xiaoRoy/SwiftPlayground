@@ -93,4 +93,57 @@ class Car {
     convenience init(id: String) {
         self.init(id: id, brand: "BMW")
     }
+    
+//    init(id: String) {
+//        self.id = id
+//        self.brand = "BMW"
+//    }
+}
+
+class Shape {
+    let id: String
+    let name: String
+    
+    init(id: String, name: String) {
+        self.id = id
+        self.name = name
+    }
+    
+    convenience init(id: String) {
+        self.init(id: id, name: "Shape")
+    }
+}
+
+class Point : Shape {
+    var x: Double
+    var y: Double
+    
+//    convenience init() {
+//        self.init(id: "id", name: "name")
+//    }
+    
+    
+//    convenience init(id: String) {
+//        self.init(id: id, name: "name")
+//        x = 0.0
+//        y = 0.0
+//    }
+    
+    convenience init(id: String, x: Double, y: Double) {
+        self.init(id: id, name: "Circle")
+        self.x = x
+        self.y = y
+    }
+}
+
+//let pointA = Point(id: "123", name: "Circle")
+
+class Circle : Shape {
+    
+    var radius: Double
+    
+    init(id: String, radius: Double) {
+        self.radius = radius
+        super.init(id: id, name: "Circle")
+    }
 }
