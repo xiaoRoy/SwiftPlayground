@@ -100,6 +100,30 @@ class Car {
 //    }
 }
 
+//example shows that subclass only has convenience initializer
+
+class Book {
+    let id: String
+    let pageCount: Int
+    let language: String
+    
+    init(id: String, pageCount: Int, language:String) {
+        self.id = id
+        self.pageCount = pageCount
+        self.language = language
+    }
+}
+
+class EnglishBook : Book {
+    convenience init(id: String, pageCount: Int) {
+        self.init(id: id, pageCount: pageCount, language: "English")
+    }
+}
+
+let englishBook = EnglishBook(id: "123", pageCount: 232)
+
+//end
+
 class Shape {
     let id: String
     let name: String
@@ -118,25 +142,19 @@ class Point : Shape {
     var x: Double
     var y: Double
     
-//    convenience init() {
-//        self.init(id: "id", name: "name")
-//    }
-    
-    
-//    convenience init(id: String) {
-//        self.init(id: id, name: "name")
-//        x = 0.0
-//        y = 0.0
-//    }
-    
-    convenience init(id: String, x: Double, y: Double) {
-        self.init(id: id, name: "Circle")
+    init(id: String, x: Double, y: Double){
         self.x = x
         self.y = y
+        super.init(id: id, name: "Circle")
+    }
+    
+    //Override initializers
+    convenience init(id: String) {
+        self.init(id: id, x: 0.0, y: 0.0)
     }
 }
 
-//let pointA = Point(id: "123", name: "Circle")
+let pointA = Point(id: "123")
 
 class Circle : Shape {
     
