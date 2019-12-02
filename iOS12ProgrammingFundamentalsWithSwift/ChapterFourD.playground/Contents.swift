@@ -103,3 +103,51 @@ class SquareWithLog : Square {
 let square = SquareWithLog(width: 3, height: 3)
 square.area = 16
 square.area
+
+
+class Dog {
+    class func whatDogSay() -> String {
+        print("Dog")
+        return "woof"
+    }
+    
+    func bark() {
+        print(Dog.whatDogSay())
+    }
+}
+
+class NoisyDog : Dog {
+    override class func whatDogSay() -> String {
+        print("NoisyDog")
+        return "woof Woof"
+    }
+}
+
+class GoodDog : Dog {
+    override static func whatDogSay() -> String {
+        return "woof good"
+    }
+}
+
+let noisyDog: Dog = NoisyDog()
+noisyDog.bark()
+
+class Book {
+    class var language: String {
+        get {
+            return "Unknown"
+        }
+    }
+}
+
+class ChineseBook : Book {
+    override class var language: String {
+        return "Chinses"
+    }
+}
+
+class EnglishBook : Book {
+    override static var language: String {
+        return "English"
+    }
+}
