@@ -88,9 +88,13 @@ let isAssigned: Void? = (dog?.name = "Dog")
 
 
 let stringMaybeG: String? = "how are you"
-let resultG = stringMaybeG.map {
-    (text: String) -> String in
-    return text.uppercased()
+let resultG: String?? = stringMaybeG.map {
+    (text: String) -> String? in
+    return nil
+}
+let resultGG:Int? = stringMaybeG.flatMap {
+    (text: String) -> Int? in
+    return Int(text)
 }
 
 let resultH: Int? = stringMaybeG.map {
