@@ -50,3 +50,23 @@ if shape is Circle {
 
 let circleC = shape as? Circle
 circleC?.calculateArea()
+let areaCircle = (shape as? Circle)?.calculateArea()
+
+let shapeB: Shape? = Circle(radius: 4)
+if shapeB is Circle {
+    (shapeB as! Circle).calculateArea()
+}
+
+(shapeB as? Circle)?.calculateArea()
+
+let textA: NSString = "what"
+let textB: String = "where"
+let textC: NSString = textB as NSString
+//
+//UIViewController()
+//
+//let userDefault = UserDefaults.standard
+//let textD = "how"
+//userDefault.set(textD, forKey: "greeting")
+
+
