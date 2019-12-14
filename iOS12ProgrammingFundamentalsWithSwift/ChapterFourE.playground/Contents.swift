@@ -70,3 +70,29 @@ let textC: NSString = textB as NSString
 //userDefault.set(textD, forKey: "greeting")
 
 
+class Dog {
+    class var whatDogSays : String {
+        return "woof"
+    }
+    
+    func back() {
+        print(type(of: self).whatDogSays)
+    }
+}
+
+class NoisyDog : Dog {
+    override class var whatDogSays : String {
+        return "woof woof woof"
+    }
+}
+
+
+func exceptTypeOf(dogType: Dog.Type) {
+    
+}
+
+exceptTypeOf(dogType: Dog.self)
+exceptTypeOf(dogType: type(of: Dog()))
+
+exceptTypeOf(dogType: NoisyDog.self)
+exceptTypeOf(dogType: type(of: NoisyDog()))
