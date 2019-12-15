@@ -96,3 +96,66 @@ exceptTypeOf(dogType: type(of: Dog()))
 
 exceptTypeOf(dogType: NoisyDog.self)
 exceptTypeOf(dogType: type(of: NoisyDog()))
+
+
+class Apple {
+    let id:String
+    
+    required init(id: String) {
+        self.id = id
+    }
+}
+
+class RedApple : Apple {
+    
+    var weight: Double
+    
+    init(weight: Double) {
+        self.weight = weight
+        super.init(id:"red")
+    }
+    
+    required init(id: String) {
+        self.weight = 1.0
+        super.init(id: id)
+    }
+    
+}
+
+func makeApple(_ appleType: Apple.Type) -> Apple {
+//    if we don't declare that initializer as required, we get a compile error! The reason is that the compiler is in doubt as to whether the init(name:) initializer is implemented by every possi‐ ble subtype of Dog.
+    let apple = appleType.init(id: "123")
+    return apple
+}
+
+class Book {
+    var title: String
+    
+    required init (title: String) {
+        self.title = title
+    }
+    
+    class func createBook(title: String) -> Book {
+        let book = self.init(title: title)
+        return book
+    }
+    
+    class func createAnotherBook(title: String) -> Self {
+        let book = self.init(title: title)
+        return book
+    }
+    
+    func cloneBook() -> Self {
+        return type(of: self).init(title: title);
+    }
+}
+
+class EnglishBook: Book {
+    
+}
+
+let book: Book = Book.createBook(title: "Harry")
+let englishBook = EnglishBook.createBook(title: "Harry")
+
+let anotherBook = book.cloneBook()
+
