@@ -159,3 +159,16 @@ let englishBook = EnglishBook.createBook(title: "Harry")
 
 let anotherBook = book.cloneBook()
 
+func compareBookWith(anohter bookType: Book.Type) -> (Bool, Bool) {
+    let equality = bookType == Book.self
+    let equalityB = bookType.self == Book.self
+    let equalityC = bookType == type(of: bookType)
+    let typology = bookType is Book.Type
+    return (equality, typology)
+}
+
+func compareBookWithB(book: Book) {
+    let bookType = type(of: book)
+    let equality = bookType == Book.self
+    
+}
