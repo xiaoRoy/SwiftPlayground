@@ -101,6 +101,17 @@ func getgetBroaderErrorMessageThird(statusCode: Int) -> String {
     
 }
 
-func showAge() {
-    
+func showAge(age: Int) {
+    switch age {
+    case 18...35:
+        print("Cool demographic")
+    default:
+        break
+    }
+}
+
+func showAgeSecond(age: Int) {
+    if case 18...35 = age {
+        print("Cool demographic")
+    }
 }
