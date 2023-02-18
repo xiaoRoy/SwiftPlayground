@@ -58,14 +58,13 @@ func testSpaceship() {
         blasterFireCount += 1
     }
 }
-testSpaceship()
+//testSpaceship()
+let result = fizzAndBuzz(count:15)
 
-func fizzAndBuzz(count: Int) {
+func fizzAndBuzz(count: Int) -> String {
     var result: String = String()
-    
     for index in 1...count {
         let fizzAndBuzzResult = (fizz: index % 3, buzz: index % 5)
-        let divisible = (0, 0)
         switch fizzAndBuzzResult {
         case (0, 0):
             result.append("FIZZ BUZZ")
@@ -77,6 +76,9 @@ func fizzAndBuzz(count: Int) {
             result.append(index.description)
         }
         let isLastIndex = index == count
-        
+        if !isLastIndex {
+            result.append(",")
+        }
     }
+    return result
 }
