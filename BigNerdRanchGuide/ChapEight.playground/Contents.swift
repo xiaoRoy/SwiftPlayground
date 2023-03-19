@@ -44,4 +44,35 @@ func combineArrays() {
 
 //challenges
 
+func bronzeChallenge() {
+    var toDoList = ["Take out the trash", "Pay bills", "Cross off finished items"]
+    
+    print(toDoList.isEmpty)
+}
+
+///bronzeChallenge()
+
+
+//silver challenges
+func reverse() {
+    var items = ["Take out the trash", "Pay bills", "Cross off finished items", "Code every day", "Run 4 times a week"]
+    let lastIndexToSwap = items.count / 2
+    for index in 0..<lastIndexToSwap {
+        let indexToSwap = items.count - 1 - index
+        let itemToSwap = items[indexToSwap]
+        let current = items[index]
+        
+        items[index] = itemToSwap
+        items[indexToSwap] = current
+    }
+    
+    for item in items {
+        print(item)
+        items.append("test")
+    }
+    
+    print("The size of items is:\(items.count)")
+}
+
+reverse()
 
