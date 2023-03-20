@@ -1,0 +1,19 @@
+import Cocoa
+
+//optional types
+
+var errorCode: Optional<String> = Optional("404")
+
+var errorCodeSecond: String? = "404"
+
+
+var noAssignment: String?
+
+print(noAssignment)
+
+func show(error by: String?) {
+    if by != nil {
+        let errorCode = by!
+    }
+    
+}
