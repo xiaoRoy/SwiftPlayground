@@ -22,10 +22,22 @@ func show(error by: String?) {
 // optional binding
 func showOptionalBinding(errorCode: String?) {
     
-    if let errorCode = errorCode {
+    if let errorCode = errorCode, let errorCodeInt = Int(errorCode), errorCodeInt>=200, errorCodeInt < 300{
         print(errorCode)
+        print(errorCodeInt)
     }
     
+    let what: Int
 }
 
-showOptionalBinding(errorCode: "404")
+//showOptionalBinding(errorCode: "200")
+
+//Implicitly Unwrapped Optionals
+
+func learnImplicitlyUnwrappedOptionals() {
+    var errorCode: String! = "404"
+    let errorCodeSecond: String = errorCode
+    let errorCodeThird = errorCode // The type of errorCodeThird is String?
+    errorCodeThird?.count
+
+}
