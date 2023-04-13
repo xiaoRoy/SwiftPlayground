@@ -41,3 +41,44 @@ func learnImplicitlyUnwrappedOptionals() {
     errorCodeThird?.count
 
 }
+
+//Optional Chaining
+func learnOptioanlChaining(errorCodeString: String) {
+    var errorDescription:String?
+    if let errorCodeInt = Int(errorCodeString), errorCodeInt == 400 {
+        errorDescription = "\(errorCodeInt + 200): resource not found."
+    }
+    
+    let uppercaseErrorDescription = errorDescription?.uppercased()
+    print(uppercaseErrorDescription?.description)
+    
+    let reslut: String
+    let noErrors = "No errors"
+    if let errorDescription = errorDescription {
+        reslut = errorDescription
+    } else {
+        reslut = noErrors
+    }
+    
+    let resultSecond = errorDescription ?? noErrors
+}
+
+//Gold Challenge
+
+func accessArray() {
+    let lion = "lion"
+    var animals = ["dog", "cat", "fish","monkey"]
+    animals.append(lion)
+    
+    let indexOfDog = animals.firstIndex(of: "dog")
+    
+    
+    if let indexOfDog = indexOfDog {
+        let targetIndex =  animals.index(indexOfDog, offsetBy: 2)
+        let target = animals[targetIndex]
+        print(target)
+    }
+    
+}
+
+accessArray()
