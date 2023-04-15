@@ -48,4 +48,78 @@ func learnAccessingAndModifyingValues() {
     print("Count after removal is \(countAfterRemoval)")
 }
 
-learnAccessingAndModifyingValues()
+//learnAccessingAndModifyingValues()
+
+
+//looping over a Dictionary
+
+func loopADictionary() {
+    let movieNameTron = "Tron"
+    let movieRatings = [movieNameTron: 4, "WarGames": 5, "Sneakers": 4]
+    
+    for (movie, rating) in movieRatings {
+        print("The movie:\(movie) was rated \(rating)")
+    }
+    
+    let ratedMovies = Array(movieRatings.keys)
+}
+
+//loopADictionary()
+
+//challenges
+
+func showAllPlayers() {
+    let teamMap = ["A": ["Jane", "Michaela", "Rachel"], "B": ["Allysha","Janine", "Sydney", "Toni"],
+                   "C": ["Shelina", "Emily", "Chioma", "Kailen"]]
+    
+    var allNames:[String] = []
+    for names in teamMap.values {
+//        allNames.append(contentsOf: names)
+        allNames += names
+    }
+    print(allNames)
+}
+//showAllPlayers()
+
+func showTeamInfo() {
+    let teamMap = ["A": ["Jane", "Michaela", "Rachel"], "B": ["Allysha","Janine", "Sydney", "Toni"],
+                   "C": ["Shelina", "Emily", "Chioma", "Kailen"]]
+    
+    for (team, players) in teamMap {
+        let newLine = "\n"
+        var teamInfo = "\(team):\(newLine)"
+        for player in players {
+            teamInfo.append("\(player)\(newLine)")
+        }
+//        teamInfo.append(newLine)
+        print(teamInfo)
+    }
+}
+//showTeamInfo()
+
+func showTeamInfoSecond() {
+    let teamMap = ["A": ["Jane", "Michaela", "Rachel"], "B": ["Allysha","Janine", "Sydney", "Toni"],
+                   "C": ["Shelina", "Emily", "Chioma", "Kailen"]]
+    
+    for (team, players) in teamMap {
+        let newLine = "\n"
+        let playersInfo = players.joined(separator: newLine)
+        var teamInfo = "\(team):\(newLine)\(playersInfo)\(newLine)"
+        print(teamInfo)
+        
+    }
+  
+}
+//showTeamInfoSecond()
+
+func showTeamInfoThird() {
+    let teamMap = ["A": ["Jane", "Michaela", "Rachel"], "B": ["Allysha","Janine", "Sydney", "Toni"],
+                   "C": ["Shelina", "Emily", "Chioma", "Kailen"]]
+    
+    for (team, players) in teamMap {
+        print ("\(team): \(players)", separator: "what", terminator: "\ntest")
+    }
+    
+    
+}
+showTeamInfoThird()
