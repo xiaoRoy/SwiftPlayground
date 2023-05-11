@@ -9,4 +9,14 @@ func showDivisionResultFor(numerator: Double, denominator: Double, withPunctuati
     let result = divisionDescriptionFor(numerator: numerator, denominator: denominator)
     print("\(numerator) divided by \(denominator) is \(result)\(punctuation)")
 }
-showDivisionResultFor(numerator: 0.22, denominator: Double.pi)
+//showDivisionResultFor(numerator: 0.22, denominator: Double.pi)
+
+//in-out parameters
+var error = "The request failed:"
+
+func appendError(code: Int, to errorMessage: inout String) {
+    if code == 400 {
+        errorMessage += " bad request"
+    }
+}
+appendError(code: 400, to: &error)
