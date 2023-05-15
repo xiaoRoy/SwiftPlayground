@@ -10,6 +10,8 @@ func learnArray() {
     var threeBukets = ["apple", "pear"]
     
     var emptyStringArray = [String]()
+    
+    var emptyStringArrayB:[String] = []
 }
 
 //accessing and modifying arrays
