@@ -20,3 +20,21 @@ func appendError(code: Int, to errorMessage: inout String) {
     }
 }
 appendError(code: 400, to: &error)
+
+//Nested Function Definitaions and Scope
+
+func calculateAreaOfTriangleWith(base: Double,height: Double) -> Double {
+    let rectangle = base * height
+    
+    func divideByTwo() -> Double {
+        return rectangle / 2
+    }
+    
+    return divideByTwo()
+}
+calculateAreaOfTriangleWith(base: 10, height: 23)
+
+//Multiple Returns
+//func sortEvenOddNumbers(_ numnbers: [Int]) -> ([Int], [Int]) {
+//    var evens = [Int]()
+//}
