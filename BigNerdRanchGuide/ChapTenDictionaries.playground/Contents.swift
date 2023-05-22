@@ -13,6 +13,8 @@ func learnCreatingDictionary() {
     
     var emptystateAbbreviations:[String: String] = [:]
     
+    var empty = [String: String]()
+    
 }
 
 //Accessing and Modifying Values

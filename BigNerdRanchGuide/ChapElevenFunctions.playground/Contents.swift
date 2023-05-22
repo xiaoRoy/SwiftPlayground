@@ -35,6 +35,25 @@ func calculateAreaOfTriangleWith(base: Double,height: Double) -> Double {
 calculateAreaOfTriangleWith(base: 10, height: 23)
 
 //Multiple Returns
-//func sortEvenOddNumbers(_ numnbers: [Int]) -> ([Int], [Int]) {
-//    var evens = [Int]()
-//}
+func sortEvenOddNumbers(_ numbers: [Int]) -> ([Int], [Int]) {
+   return sortNumbers(numbers)
+}
+
+func sortEvenOddNumbersB(_ numbers: [Int]) -> (evens: [Int], odds: [Int]) {
+    return sortNumbers(numbers)
+}
+
+private func sortNumbers(_ numbers: [Int]) -> ([Int], [Int]) {
+    var evens = [Int]()
+    var odds = Array<Int>()
+    for number in numbers {
+        if number % 2 == 0 {
+            evens.append(number)
+        } else {
+            odds.append(number)
+        }
+    }
+    return (evens, odds)
+}
+
+
