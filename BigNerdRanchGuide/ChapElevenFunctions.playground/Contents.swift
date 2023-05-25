@@ -57,3 +57,32 @@ private func sortNumbers(_ numbers: [Int]) -> ([Int], [Int]) {
 }
 
 
+//Optional Return Types
+
+func grabMiddleName(fromFullName name: String) -> String? {
+    
+    let names = name.split(separator: " ")
+    var middleName: String?
+    if names.count == 3 {
+        middleName = String(names[1])
+    }
+    
+    return middleName
+}
+
+grabMiddleName(fromFullName: "Adam Geogre Green")
+
+//Exiting Early from a Function
+
+func displayMiddleName(inFullName name: (first: String, middle: String?, last: String)) {
+    
+    
+    guard let middleName = name.middle else {
+        print("No middle name!")
+        return
+    }
+    
+    print("The middle name is \(middleName)")
+    
+}
+displayMiddleName(inFullName: ("Luke", "Harry", "Ron"))
