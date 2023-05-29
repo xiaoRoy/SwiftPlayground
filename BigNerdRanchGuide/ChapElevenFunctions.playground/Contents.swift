@@ -75,8 +75,6 @@ grabMiddleName(fromFullName: "Adam Geogre Green")
 //Exiting Early from a Function
 
 func displayMiddleName(inFullName name: (first: String, middle: String?, last: String)) {
-    
-    
     guard let middleName = name.middle else {
         print("No middle name!")
         return
@@ -85,4 +83,16 @@ func displayMiddleName(inFullName name: (first: String, middle: String?, last: S
     print("The middle name is \(middleName)")
     
 }
-displayMiddleName(inFullName: ("Luke", "Harry", "Ron"))
+//displayMiddleName(inFullName: ("Luke", "Harry", "Ron"))
+
+
+func displayMiddleNameB(fullName name:(first: String, middle: String?, last: String)) {
+    
+    if let middleName = name.middle  {
+        print("The middle name is \(middleName)")
+    } else {
+        print("No middle name!")
+    }
+
+}
+displayMiddleNameB(fullName: ("Luke", "Harry", "Ron"))
