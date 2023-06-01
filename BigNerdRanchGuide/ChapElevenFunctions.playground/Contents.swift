@@ -95,4 +95,23 @@ func displayMiddleNameB(fullName name:(first: String, middle: String?, last: Str
     }
 
 }
-displayMiddleNameB(fullName: ("Luke", "Harry", "Ron"))
+//displayMiddleNameB(fullName: ("Luke", "Harry", "Ron"))
+
+
+//Bronze Challenge
+func displayMiddleNameC(fullName name:(first: String, middle: String?, last: String)) {
+    
+    guard let middleName = name.middle, let middleInitial = middleName.first, middleName.count > 10 else {
+        print("Hey, there!")
+        return
+    }
+    let greetingTo = "\(name.first) \(middleInitial). \(name.last)"
+    print(greetingTo)
+}
+
+displayMiddleNameC(fullName: (first: "Alois", middle: "Rumpelstiltskin", last: "Chaz"))
+
+
+//Function Types
+
+let evenOddAction: ([Int]) -> ([Int], [Int]) = sortEvenOddNumbers(_:)
