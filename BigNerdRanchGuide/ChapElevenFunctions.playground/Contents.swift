@@ -115,3 +115,17 @@ displayMiddleNameC(fullName: (first: "Alois", middle: "Rumpelstiltskin", last: "
 //Function Types
 
 let evenOddAction: ([Int]) -> ([Int], [Int]) = sortEvenOddNumbers(_:)
+
+//Silver Challenge
+func siftBeans(from groceryList: [String]) -> (beans: [String], otherGroceryies:Array<String>) {
+    var beans:[String] = []
+    var otherGroceries:[String] = []
+    for bean in groceryList {
+        if bean.hasPrefix("bean") {
+            beans.append(bean)
+        } else {
+            otherGroceries.append(bean)
+        }
+    }
+    return (beans, otherGroceries)
+}
