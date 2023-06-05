@@ -129,3 +129,15 @@ func siftBeans(from groceryList: [String]) -> (beans: [String], otherGroceryies:
     }
     return (beans, otherGroceries)
 }
+
+func displayGreetingA() -> () {
+    print("Hello, Korld")
+}
+
+func displayGreetingB() {
+    print("Hello, Rorld")
+}
+
+func displayGreetingC() -> Void {
+    print("Hello, Iorld")
+}
